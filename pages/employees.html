@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and manage employees in HCM Lite">
+  <title>Employees | HCM Lite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/employees.css">
+</head>
+
+<body>
+  <div class="appShell">
+<aside
+  class="sidebar"
+  id="sidebar"
+  popover="auto"
+  aria-label="Admin navigation"
+>
+  <div class="sidebarBrand">
+    <span class="brandMark" aria-hidden="true">
+      <i class="bi bi-people-fill"></i>
+    </span>
+
+    <div class="brandTitle">
+      <strong>HCM Lite</strong>
+      <span>HR Management</span>
+    </div>
+
+    <button
+      class="mobileSidebarClose"
+      type="button"
+      popovertarget="sidebar"
+      popovertargetaction="hide"
+      aria-label="Close navigation"
+    >
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <nav class="sidebarNav" aria-label="Main navigation">
+    <a class="navItem" href="admin.html">
+      <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <a class="navItem isActive" href="employees.html" aria-current="page">
+      <i class="bi bi-people" aria-hidden="true"></i>
+      <span>Employees</span>
+    </a>
+
+    <a class="navItem" href="leaves.html">
+      <i class="bi bi-calendar-check" aria-hidden="true"></i>
+      <span>Leave Management</span>
+    </a>
+
+    <button class="navItem" type="button" disabled>
+      <i class="bi bi-gear" aria-hidden="true"></i>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <div class="sidebarFooter">
+    <div class="profileSummary">
+      <span class="profileAvatar" aria-hidden="true">A</span>
+      <div class="profileText">
+        <strong>Administrator</strong>
+        <span>Company Admin</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+    <div class="appArea">
+      <header class="topbar">
+<div class="topbarLeft">
+  <button
+    class="iconButton menuButton"
+    type="button"
+    popovertarget="sidebar"
+    aria-controls="sidebar"
+    aria-label="Open navigation"
+  >
+    <i class="bi bi-list" aria-hidden="true"></i>
+  </button>
+
+  <h2 class="topbarTitle">Employees</h2>
+</div>
+        <div class="topbarRight">
+          <span class="topbarRole">Administrator</span>
+          <span class="profileAvatar topbarAvatar" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="employeesMain">
+  <div class="employeesBreadcrumb" aria-label="Breadcrumb">
+    <a href="admin.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Employees</span>
+  </div>
+
+  <section class="employeesHeading" aria-labelledby="employeesTitle">
+    <div><p class="employeesEyebrow">People operations</p><h1 id="employeesTitle">Employees</h1><p>Manage your team, employee details, and employment status.</p></div>
+    <button class="addEmployeeButton" type="button" popovertarget="addEmployeeModal" aria-haspopup="dialog"><i class="bi bi-person-plus" aria-hidden="true"></i>Add employee</button>
+  </section>
+
+  <section class="employeeOverview" aria-label="Employee totals">
+    <div class="overviewLead"><span class="overviewIcon" aria-hidden="true"><i class="bi bi-person-vcard"></i></span><div><span class="overviewLabel">People in this directory</span><strong>0 employees</strong></div></div>
+    <div class="overviewMetric"><span class="metricDot activeDot" aria-hidden="true"></span><span>Active</span><strong>0</strong></div>
+    <div class="overviewMetric"><span class="metricDot inactiveDot" aria-hidden="true"></span><span>Inactive</span><strong>0</strong></div>
+  </section>
+
+  <section class="directoryPanel" aria-labelledby="directoryTitle">
+    <div class="directoryHeading">
+      <div><h2 id="directoryTitle">Employee directory</h2><p>Search and filter your employee list.</p></div>
+      <span class="directoryTotal">0 people</span>
+    </div>
+
+    <div class="directoryToolbar" aria-label="Search and filter employees">
+      <label class="directorySearch"><span class="visuallyHidden">Search employees</span><i class="bi bi-search" aria-hidden="true"></i><input type="search" placeholder="Search name, ID, or email"></label>
+      <label class="directoryFilter"><span>Status</span><select><option value="all">All employees</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
+      <label class="directoryFilter"><span>Department</span><select><option value="all">All departments</option><option value="engineering">Engineering</option><option value="finance">Finance</option><option value="marketing">Marketing</option><option value="people">People &amp; Culture</option></select></label>
+    </div>
+
+    <div class="employeeTableWrap">
+      <table class="employeeTable isEmpty">
+        <thead><tr><th scope="col">Employee</th><th scope="col">Department</th><th scope="col">Work email</th><th scope="col">Joined</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Profile</span></th></tr></thead>
+        <tbody><tr><td colspan="6"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-person-plus"></i></span><strong>No employees yet</strong><span>Add an employee to start building your directory.</span><button class="emptyStateAction" type="button" popovertarget="addEmployeeModal">Add employee</button></div></td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="directoryFooter"><span>0 employees</span><span>Employee directory</span></div>
+  </section>
+</main>
+    </div>
+  </div>
+
+  <section
+    class="employeeModal"
+    id="addEmployeeModal"
+    popover="auto"
+    role="dialog"
+    aria-labelledby="addEmployeeTitle"
+  >
+    <div class="modalHeader">
+      <div>
+        <p class="modalEyebrow">People operations</p>
+        <h2 id="addEmployeeTitle">Add employee</h2>
+        <p>Enter the employee's work details.</p>
+      </div>
+
+      <button
+        class="modalCloseButton"
+        type="button"
+        popovertarget="addEmployeeModal"
+        popovertargetaction="hide"
+        aria-label="Close dialog"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <form class="employeeForm">
+      <div class="employeeFormGrid">
+        <div class="formField">
+          <label for="employeeName">Full name <span aria-hidden="true">*</span></label>
+          <input id="employeeName" name="employeeName" type="text" placeholder="Full name">
+        </div>
+
+        <div class="formField">
+          <label for="employeeId">Employee ID <span aria-hidden="true">*</span></label>
+          <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID">
+        </div>
+
+        <div class="formField">
+          <label for="employeeEmail">Work email <span aria-hidden="true">*</span></label>
+          <input id="employeeEmail" name="employeeEmail" type="email" placeholder="name@company.com">
+        </div>
+
+        <div class="formField">
+          <label for="employeeDepartment">Department</label>
+          <select id="employeeDepartment" name="employeeDepartment">
+            <option value="">Select department</option>
+            <option>Engineering</option>
+            <option>Finance</option>
+            <option>Marketing</option>
+            <option>People &amp; Culture</option>
+          </select>
+        </div>
+
+        <div class="formField">
+          <label for="employeeJobTitle">Job title</label>
+          <input id="employeeJobTitle" name="employeeJobTitle" type="text" placeholder="Job title">
+        </div>
+
+        <div class="formField">
+          <label for="employeeJoiningDate">Joining date</label>
+          <input id="employeeJoiningDate" name="employeeJoiningDate" type="date">
+        </div>
+
+        <div class="formField">
+          <label for="employeeStatus">Status</label>
+          <select id="employeeStatus" name="employeeStatus">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="formActions">
+        <button
+          class="secondaryButton"
+          type="button"
+          popovertarget="addEmployeeModal"
+          popovertargetaction="hide"
+        >
+          Cancel
+        </button>
+        <button class="primaryButton" type="button" disabled>
+          <i class="bi bi-check2" aria-hidden="true"></i>
+          Save employee
+        </button>
+      </div>
+    </form>
+  </section>
+</body>
+</html>
