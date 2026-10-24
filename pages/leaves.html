@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review employee leave requests in HCM Lite">
+  <title>Leave Management | HCM Lite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/leaves.css">
+</head>
+
+<body>
+  <div class="appShell">
+<aside
+  class="sidebar"
+  id="sidebar"
+  popover="auto"
+  aria-label="Admin navigation"
+>
+  <div class="sidebarBrand">
+    <span class="brandMark" aria-hidden="true">
+      <i class="bi bi-people-fill"></i>
+    </span>
+
+    <div class="brandTitle">
+      <strong>HCM Lite</strong>
+      <span>HR Management</span>
+    </div>
+
+    <button
+      class="mobileSidebarClose"
+      type="button"
+      popovertarget="sidebar"
+      popovertargetaction="hide"
+      aria-label="Close navigation"
+    >
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <nav class="sidebarNav" aria-label="Main navigation">
+    <a class="navItem" href="admin.html">
+      <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <a class="navItem" href="employees.html">
+      <i class="bi bi-people" aria-hidden="true"></i>
+      <span>Employees</span>
+    </a>
+
+    <a class="navItem isActive" href="leaves.html" aria-current="page">
+      <i class="bi bi-calendar-check" aria-hidden="true"></i>
+      <span>Leave Management</span>
+    </a>
+
+    <button class="navItem" type="button" disabled>
+      <i class="bi bi-gear" aria-hidden="true"></i>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <div class="sidebarFooter">
+    <div class="profileSummary">
+      <span class="profileAvatar" aria-hidden="true">A</span>
+      <div class="profileText">
+        <strong>Administrator</strong>
+        <span>Company Admin</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+    <div class="appArea">
+      <header class="topbar">
+<div class="topbarLeft">
+  <button
+    class="iconButton menuButton"
+    type="button"
+    popovertarget="sidebar"
+    aria-controls="sidebar"
+    aria-label="Open navigation"
+  >
+    <i class="bi bi-list" aria-hidden="true"></i>
+  </button>
+
+  <h2 class="topbarTitle">Leave Management</h2>
+</div>
+
+        <div class="topbarRight">
+          <span class="topbarRole">Administrator</span>
+          <span class="profileAvatar topbarAvatar" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="leavesMain">
+  <div class="leaveBreadcrumb" aria-label="Breadcrumb"><a href="admin.html">Home</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Leave Management</span></div>
+
+  <section class="leavePageHeading" aria-labelledby="leavePageTitle">
+    <div><p class="leaveEyebrow">People operations</p><h1 id="leavePageTitle">Leave Management</h1><p>Review time off, track team availability, and manage requests.</p></div>
+  </section>
+
+  <section class="leaveStats" aria-label="Leave overview">
+    <article class="leaveStat"><span class="leaveStatLabel">Awaiting review</span><strong class="leaveStatValue">0</strong><span class="leaveStatFoot"><i class="bi bi-hourglass-split" aria-hidden="true"></i>No pending requests</span></article>
+    <article class="leaveStat"><span class="leaveStatLabel">Approved</span><strong class="leaveStatValue">0</strong><span class="leaveStatFoot"><i class="bi bi-check2-circle" aria-hidden="true"></i>No approved requests</span></article>
+    <article class="leaveStat"><span class="leaveStatLabel">Rejected</span><strong class="leaveStatValue">0</strong><span class="leaveStatFoot"><i class="bi bi-x-circle" aria-hidden="true"></i>No rejected requests</span></article>
+    <article class="leaveStat"><span class="leaveStatLabel">Out today</span><strong class="leaveStatValue">0</strong><span class="leaveStatFoot"><i class="bi bi-calendar2-week" aria-hidden="true"></i>No approved leave today</span></article>
+  </section>
+
+  <section class="leaveOverviewGrid" aria-label="Leave review overview">
+    <article class="overviewPanel reviewPanel">
+      <div class="panelHeading"><div><p class="panelEyebrow">Action required</p><h2>Awaiting your review</h2></div><span class="panelCount">0</span></div>
+      <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-inbox"></i></span><strong>No leave requests to review</strong><span>New employee requests will appear here.</span></div>
+    </article>
+
+    <article class="overviewPanel outTodayPanel">
+      <div class="panelHeading"><div><p class="panelEyebrow">Team availability</p><h2>Out today</h2></div><span class="todayDate"><i class="bi bi-calendar3" aria-hidden="true"></i>Today</span></div>
+      <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-check"></i></span><strong>No one is marked out today</strong><span>Approved leave for today will appear here.</span></div>
+    </article>
+  </section>
+
+  <section class="requestRegister" aria-labelledby="requestRegisterTitle">
+    <div class="registerHeader"><div><p class="panelEyebrow">Request history</p><h2 id="requestRegisterTitle">All requests</h2><p>Review leave requests and their current status.</p></div></div>
+
+    <div class="requestFilters" aria-label="Search and filter requests">
+      <label class="requestSearch"><span class="visuallyHidden">Search requests</span><i class="bi bi-search" aria-hidden="true"></i><input type="search" placeholder="Search employee or ID"></label>
+      <label class="filterControl"><span>Status</span><select><option value="all">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
+      <label class="filterControl"><span>Leave type</span><select><option value="all">All leave types</option><option value="annual">Annual Leave</option><option value="casual">Casual Leave</option><option value="sick">Sick Leave</option></select></label>
+    </div>
+
+    <div class="requestTableWrap">
+      <table class="requestTable isEmpty">
+        <thead><tr><th scope="col">Employee</th><th scope="col">Leave type</th><th scope="col">Dates</th><th scope="col">Days</th><th scope="col">Applied</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Actions</span></th></tr></thead>
+        <tbody><tr><td colspan="7"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-x"></i></span><strong>No leave requests yet</strong><span>Requests will appear here when employees submit them.</span></div></td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="tableFooter"><span>0 requests</span><span>Leave request register</span></div>
+  </section>
+</main>
+    </div>
+  </div>
+</body>
+</html>
