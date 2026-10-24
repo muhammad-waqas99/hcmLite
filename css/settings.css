@@ -1,0 +1,360 @@
+.settingsMain {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 30px 32px 40px;
+}
+
+.settingsHeading {
+  margin-bottom: 22px;
+}
+
+.settingsEyebrow {
+  margin: 0 0 6px;
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.settingsHeading h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.settingsHeading p:last-child {
+  margin: 7px 0 0;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.settingsForm {
+  margin: 0;
+}
+
+.settingsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.8fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.settingsMainColumn,
+.settingsSideColumn {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+}
+
+.settingsCard {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+  box-shadow: 0 3px 12px rgb(23 32 51 / 3%);
+}
+
+.settingsCardHeading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.settingsCardIcon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #EFF6FF;
+  color: var(--color-primary);
+  font-size: 18px;
+}
+
+.settingsCardHeading h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.settingsCardHeading p {
+  margin: 5px 0 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settingsFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.settingsField {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.settingsFieldFull {
+  grid-column: 1 / -1;
+}
+
+.settingsField > label,
+.settingsDaysFieldset legend {
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.settingsField input,
+.settingsField textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.settingsField textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.settingsField input:focus,
+.settingsField textarea:focus {
+  border-color: var(--color-primary);
+  outline: 3px solid rgb(37 99 235 / 12%);
+}
+
+.settingsField small {
+  color: var(--color-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.settingsNumberField {
+  position: relative;
+}
+
+.settingsNumberField input {
+  padding-right: 72px;
+}
+
+.settingsNumberField > span {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  color: var(--color-muted);
+  font-size: 11px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.settingsDaysFieldset {
+  min-width: 0;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.settingsDaysFieldset legend {
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.settingsDaysFieldset > p {
+  margin: 0 0 12px;
+  color: var(--color-muted);
+  font-size: 11px;
+}
+
+.settingsDays {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.settingsDay {
+  min-width: 0;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.settingsDay:has(input:checked) {
+  border-color: #BFDBFE;
+  background: #EFF6FF;
+  color: var(--color-primary);
+}
+
+.settingsDay input {
+  width: 16px;
+  height: 16px;
+  min-height: 0;
+  flex: 0 0 16px;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.settingsDay span {
+  overflow-wrap: anywhere;
+}
+
+.settingsRulePreview {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #BFDBFE;
+  border-radius: 8px;
+  background: #F8FBFF;
+  color: var(--color-primary-hover);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.settingsNote {
+  margin: 14px 0 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.settingsSaveBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+
+.settingsMessage {
+  min-width: 0;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settingsMessage.isSuccess {
+  color: var(--color-success);
+}
+
+.settingsMessage.isError {
+  color: var(--color-danger);
+}
+
+.settingsSaveButton {
+  min-height: 44px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 7px;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.settingsSaveButton:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+}
+
+.settingsSaveButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.settingsSaveButton:focus-visible,
+.settingsDay:focus-within {
+  outline: 3px solid rgb(37 99 235 / 25%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .settingsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .settingsSideColumn {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .settingsMain {
+    padding: 22px 16px 32px;
+  }
+
+  .settingsSideColumn {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .settingsHeading h1 {
+    font-size: 25px;
+  }
+
+  .settingsCard {
+    padding: 17px 15px;
+  }
+
+  .settingsFormGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .settingsFieldFull {
+    grid-column: auto;
+  }
+
+  .settingsDays {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .settingsDay {
+    min-height: 44px;
+  }
+
+  .settingsSaveBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .settingsSaveButton {
+    width: 100%;
+  }
+}

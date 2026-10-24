@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage HCM Lite company and work schedule settings">
+  <title>Settings | HCM Lite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  >
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/settings.css">
+
+  <script src="../js/settings.js" defer></script>
+</head>
+
+<body>
+  <div class="appShell">
+    <aside
+      class="sidebar"
+      id="sidebar"
+      popover="auto"
+      aria-label="Admin navigation"
+    >
+      <div class="sidebarBrand">
+        <span class="brandMark" aria-hidden="true">
+          <i class="bi bi-people-fill"></i>
+        </span>
+
+        <div class="brandTitle">
+          <strong>HCM Lite</strong>
+          <span>HR Management</span>
+        </div>
+
+        <button
+          class="mobileSidebarClose"
+          type="button"
+          popovertarget="sidebar"
+          popovertargetaction="hide"
+          aria-label="Close navigation"
+        >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <nav class="sidebarNav" aria-label="Main navigation">
+        <a class="navItem" href="admin.html">
+          <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="navItem" href="employees.html">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Employees</span>
+        </a>
+
+        <a class="navItem" href="leaves.html">
+          <i class="bi bi-calendar-check" aria-hidden="true"></i>
+          <span>Leave Management</span>
+        </a>
+
+        <a
+          class="navItem isActive"
+          href="settings.html"
+          aria-current="page"
+        >
+          <i class="bi bi-gear" aria-hidden="true"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebarFooter">
+        <div class="profileSummary">
+          <span class="profileAvatar" aria-hidden="true">A</span>
+          <div class="profileText">
+            <strong>Administrator</strong>
+            <span>Company Admin</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="appArea">
+      <header class="topbar">
+        <div class="topbarLeft">
+          <button
+            class="iconButton menuButton"
+            type="button"
+            popovertarget="sidebar"
+            aria-controls="sidebar"
+            aria-label="Open navigation"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <h2 class="topbarTitle">Settings</h2>
+        </div>
+
+        <div class="topbarRight">
+          <span class="topbarRole">Administrator</span>
+          <span class="profileAvatar" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="settingsMain">
+        <section class="settingsHeading" aria-labelledby="settingsTitle">
+          <div>
+            <p class="settingsEyebrow">Company workspace</p>
+            <h1 id="settingsTitle">Settings</h1>
+            <p>Manage company information and working hours.</p>
+          </div>
+        </section>
+
+        <form class="settingsForm" id="settingsForm">
+          <div class="settingsGrid">
+            <div class="settingsMainColumn">
+              <section class="settingsCard" aria-labelledby="companySectionTitle">
+                <div class="settingsCardHeading">
+                  <span class="settingsCardIcon" aria-hidden="true">
+                    <i class="bi bi-building"></i>
+                  </span>
+
+                  <div>
+                    <h2 id="companySectionTitle">Company information</h2>
+                    <p>Update the contact details for your workspace.</p>
+                  </div>
+                </div>
+
+                <div class="settingsFormGrid">
+                  <div class="settingsField">
+                    <label for="companyName">Company name</label>
+                    <input
+                      id="companyName"
+                      name="companyName"
+                      type="text"
+                      maxlength="100"
+                      autocomplete="organization"
+                      required
+                    >
+                  </div>
+
+                  <div class="settingsField">
+                    <label for="companyEmail">Company email</label>
+                    <input
+                      id="companyEmail"
+                      name="companyEmail"
+                      type="email"
+                      maxlength="160"
+                      autocomplete="email"
+                    >
+                  </div>
+
+                  <div class="settingsField">
+                    <label for="companyPhone">Company phone</label>
+                    <input
+                      id="companyPhone"
+                      name="companyPhone"
+                      type="tel"
+                      maxlength="40"
+                      autocomplete="tel"
+                    >
+                  </div>
+
+                  <div class="settingsField settingsFieldFull">
+                    <label for="companyAddress">Company address</label>
+                    <textarea
+                      id="companyAddress"
+                      name="companyAddress"
+                      rows="3"
+                      maxlength="240"
+                      autocomplete="street-address"
+                    ></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="settingsCard" aria-labelledby="hoursSectionTitle">
+                <div class="settingsCardHeading">
+                  <span class="settingsCardIcon" aria-hidden="true">
+                    <i class="bi bi-clock"></i>
+                  </span>
+
+                  <div>
+                    <h2 id="hoursSectionTitle">Working hours</h2>
+                    <p>Set the work schedule used by your company.</p>
+                  </div>
+                </div>
+
+                <div class="settingsFormGrid settingsHoursGrid">
+                  <div class="settingsField">
+                    <label for="officeStart">Office start</label>
+                    <input
+                      id="officeStart"
+                      name="officeStart"
+                      type="time"
+                      required
+                    >
+                  </div>
+
+                  <div class="settingsField">
+                    <label for="officeEnd">Office end</label>
+                    <input
+                      id="officeEnd"
+                      name="officeEnd"
+                      type="time"
+                      required
+                    >
+                  </div>
+
+                  <div class="settingsField">
+                    <label for="gracePeriodMinutes">Late grace period</label>
+                    <div class="settingsNumberField">
+                      <input
+                        id="gracePeriodMinutes"
+                        name="gracePeriodMinutes"
+                        type="number"
+                        min="0"
+                        max="180"
+                        step="1"
+                        required
+                      >
+                      <span>minutes</span>
+                    </div>
+                    <small>Added to the office start time for the late threshold.</small>
+                  </div>
+
+                  <fieldset class="settingsDaysFieldset settingsFieldFull">
+                    <legend>Working days</legend>
+                    <p>Select at least one day.</p>
+
+                    <div class="settingsDays">
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="monday">
+                        <span>Monday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="tuesday">
+                        <span>Tuesday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="wednesday">
+                        <span>Wednesday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="thursday">
+                        <span>Thursday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="friday">
+                        <span>Friday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="saturday">
+                        <span>Saturday</span>
+                      </label>
+
+                      <label class="settingsDay">
+                        <input type="checkbox" name="workingDays" value="sunday">
+                        <span>Sunday</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </section>
+            </div>
+
+            <aside class="settingsSideColumn" aria-label="Settings information">
+              <section class="settingsCard settingsInfoCard">
+                <div class="settingsCardHeading">
+                  <span class="settingsCardIcon" aria-hidden="true">
+                    <i class="bi bi-hourglass-split"></i>
+                  </span>
+
+                  <div>
+                    <h2>Late threshold preview</h2>
+                    <p>Office start plus the grace period.</p>
+                  </div>
+                </div>
+
+                <p
+                  class="settingsRulePreview"
+                  id="lateRulePreview"
+                  role="status"
+                >
+                  The threshold will update when you change the work schedule.
+                </p>
+
+                <p class="settingsNote">
+                  This page saves the schedule. The current project does not yet
+                  calculate attendance totals from these settings.
+                </p>
+              </section>
+
+              <section class="settingsCard settingsInfoCard">
+                <div class="settingsCardHeading">
+                  <span class="settingsCardIcon" aria-hidden="true">
+                    <i class="bi bi-shield-check"></i>
+                  </span>
+
+                  <div>
+                    <h2>Existing records</h2>
+                    <p>Only company details and working hours are updated here.</p>
+                  </div>
+                </div>
+
+                <p class="settingsNote">
+                  Employee, attendance, and leave records are left unchanged.
+                </p>
+              </section>
+            </aside>
+          </div>
+
+          <div class="settingsSaveBar">
+            <p
+              class="settingsMessage"
+              id="settingsMessage"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+            <button
+              class="settingsSaveButton"
+              id="settingsSaveButton"
+              type="submit"
+            >
+              <i class="bi bi-check2" aria-hidden="true"></i>
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
