@@ -1,0 +1,116 @@
+.iconButton {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.iconButton:hover {
+  background: #F8FAFC;
+}
+
+.statusBadge {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusPresent {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.statusLate {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.statusHalfDay {
+  background: #EFF6FF;
+  color: var(--color-primary);
+}
+
+.statusPending {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.emptyState {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+  color: var(--color-muted);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.emptyState strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.emptyState > span:not(.emptyStateIcon) {
+  max-width: 360px;
+}
+
+.emptyStateIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 3px;
+  border-radius: 12px;
+  background: #EFF6FF;
+  color: var(--color-primary);
+  font-size: 19px;
+}
+
+.emptyStateCompact {
+  padding: 22px 16px;
+  font-size: 12px;
+}
+
+.emptyStateCompact .emptyStateIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.emptyStateAction {
+  min-height: 40px;
+  margin-top: 5px;
+  padding: 0 13px;
+  border: 1px solid var(--color-primary);
+  border-radius: 7px;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.emptyStateAction:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+}
+
+.emptyStateAction:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 30%);
+  outline-offset: 2px;
+}

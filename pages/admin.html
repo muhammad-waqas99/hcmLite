@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HCM Lite company dashboard">
+  <title>Dashboard | HCM Lite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+  <div class="appShell">
+    <aside
+      class="sidebar"
+      id="sidebar"
+      popover="auto"
+      aria-label="Admin navigation"
+    >
+      <div class="sidebarBrand">
+        <span class="brandMark" aria-hidden="true">
+          <i class="bi bi-people-fill"></i>
+        </span>
+
+        <div class="brandTitle">
+          <strong>HCM Lite</strong>
+          <span>HR Management</span>
+        </div>
+
+        <button
+          class="mobileSidebarClose"
+          type="button"
+          popovertarget="sidebar"
+          popovertargetaction="hide"
+          aria-label="Close navigation"
+        >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <nav class="sidebarNav" aria-label="Main navigation">
+        <a class="navItem isActive" href="admin.html" aria-current="page">
+          <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="navItem" href="employees.html">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <span>Employees</span>
+        </a>
+
+        <a class="navItem" href="leaves.html">
+          <i class="bi bi-calendar-check" aria-hidden="true"></i>
+          <span>Leave Management</span>
+        </a>
+
+        <button class="navItem" type="button" disabled>
+          <i class="bi bi-gear" aria-hidden="true"></i>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebarFooter">
+        <div class="profileSummary">
+          <span class="profileAvatar" aria-hidden="true">A</span>
+          <div class="profileText">
+            <strong>Administrator</strong>
+            <span>Company Admin</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="appArea">
+      <header class="topbar">
+        <div class="topbarLeft">
+          <button
+            class="iconButton menuButton"
+            type="button"
+            popovertarget="sidebar"
+            aria-controls="sidebar"
+            aria-label="Open navigation"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <h2 class="topbarTitle">Dashboard</h2>
+        </div>
+
+        <div class="topbarRight">
+          <span class="topbarRole">Administrator</span>
+          <span class="profileAvatar topbarAvatar" aria-hidden="true">A</span>
+        </div>
+      </header>
+
+      <main class="dashboardMain">
+  <section class="dashboardHeading" aria-labelledby="dashboardTitle">
+    <div>
+      <p class="dashboardEyebrow">Company overview</p>
+      <h1 id="dashboardTitle">Dashboard</h1>
+      <p>Here's what's happening in your company today.</p>
+    </div>
+  </section>
+
+  <section class="dashboardStats" aria-label="Company summary">
+    <article class="dashboardStat">
+      <span class="statIcon statIconBlue" aria-hidden="true"><i class="bi bi-people"></i></span>
+      <div class="statContent"><span>Total employees</span><strong>0</strong><small>No employees added yet</small></div>
+      <a class="statArrow" href="employees.html" aria-label="Open employee directory"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+    </article>
+    <article class="dashboardStat">
+      <span class="statIcon statIconGreen" aria-hidden="true"><i class="bi bi-person-check"></i></span>
+      <div class="statContent"><span>Present today</span><strong>0</strong><small>No attendance records</small></div>
+    </article>
+    <article class="dashboardStat">
+      <span class="statIcon statIconRed" aria-hidden="true"><i class="bi bi-person-x"></i></span>
+      <div class="statContent"><span>Absent today</span><strong>0</strong><small>No attendance records</small></div>
+    </article>
+    <article class="dashboardStat">
+      <span class="statIcon statIconAmber" aria-hidden="true"><i class="bi bi-inbox"></i></span>
+      <div class="statContent"><span>Pending leave</span><strong>0</strong><small>No requests to review</small></div>
+      <a class="statArrow" href="leaves.html" aria-label="Open leave requests"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+    </article>
+  </section>
+
+  <section class="dashboardWorkArea" aria-label="Today's team activity">
+    <div class="dashboardMainColumn">
+      <article class="dashboardPanel attendancePanel">
+        <div class="panelHeader">
+          <div><p class="panelEyebrow">Attendance</p><h2>Today's attendance</h2></div>
+          <span class="dateChip"><i class="bi bi-calendar3" aria-hidden="true"></i>Today</span>
+        </div>
+
+        <div class="attendanceBreakdown">
+          <div class="attendanceMetric"><span class="attendanceMetricLabel"><span class="attendanceDot dotOnTime" aria-hidden="true"></span>On time</span><strong>0</strong></div>
+          <div class="attendanceMetric"><span class="attendanceMetricLabel"><span class="attendanceDot dotLate" aria-hidden="true"></span>Late</span><strong>0</strong></div>
+          <div class="attendanceMetric"><span class="attendanceMetricLabel"><span class="attendanceDot dotLeave" aria-hidden="true"></span>On leave</span><strong>0</strong></div>
+          <div class="attendanceMetric"><span class="attendanceMetricLabel"><span class="attendanceDot dotAbsent" aria-hidden="true"></span>Absent</span><strong>0</strong></div>
+        </div>
+
+        <div class="attendanceTableHeading"><h3>Recent check-ins</h3><span>No records</span></div>
+        <div class="dashboardTableWrap">
+          <table class="dashboardTable isEmpty">
+            <thead><tr><th scope="col">Employee</th><th scope="col">Check-in</th><th scope="col">Status</th></tr></thead>
+            <tbody><tr><td colspan="3"><div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar-x"></i></span><strong>No attendance records today</strong><span>Check-ins will appear here when recorded.</span></div></td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="dashboardPanel directoryPanel">
+        <div class="panelHeader">
+          <div><p class="panelEyebrow">People</p><h2>Team snapshot</h2></div>
+          <a class="panelLink" href="employees.html">Employee directory <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="teamSnapshot">
+          <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-people"></i></span><strong>No employees to show</strong><span>Department totals will appear after employees are added.</span></div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="dashboardSideColumn" aria-label="Items needing attention">
+      <article class="dashboardPanel pendingPanel">
+        <div class="panelHeader">
+          <div><p class="panelEyebrow">Action required</p><h2>Pending leave</h2></div>
+          <span class="pendingCount">0</span>
+        </div>
+        <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-inbox"></i></span><strong>No requests to review</strong><span>New leave requests will appear here.</span></div>
+        <a class="panelFooterLink" href="leaves.html">Open leave management <i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="dashboardPanel outTodayPanel">
+        <div class="panelHeader">
+          <div><p class="panelEyebrow">Team availability</p><h2>Out today</h2></div>
+          <span class="outTodayCount">0 people</span>
+        </div>
+        <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-check"></i></span><strong>No approved leave today</strong><span>Team availability will appear here.</span></div>
+      </article>
+    </aside>
+  </section>
+</main>
+    </div>
+  </div>
+</body>
+</html>
