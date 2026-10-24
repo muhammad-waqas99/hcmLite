@@ -1,0 +1,14 @@
+:root {
+  --color-primary: #2563EB;
+  --color-success: #15803D;
+  --color-page: #F5F7FA;
+  --color-text: #172033;
+  --color-border: #DDE3EA;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: Arial, sans-serif;
+}
+
