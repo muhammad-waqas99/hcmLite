@@ -267,3 +267,17 @@ a {
     padding: 20px;
   }
 }
+
+
+.signInPage .authContent {
+  max-width: 380px;
+}
+
+
+.createAccountPage .authContent {
+  max-width: 410px;
+}
+
+.createAccountPage .authForm {
+  gap: 13px;
+}

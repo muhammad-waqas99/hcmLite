@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | HCM Lite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css">
+
+  <script src="../js/auth.js" defer></script>
+</head>
+<body>
+  <main class="authPage signInPage">
+    <section class="authCard">
+      <div class="formPanel">
+        <a class="brandLink" href="../index.html">
+          <span class="brandMark">H</span>
+          <span class="brandText">HCM Lite</span>
+        </a>
+
+        <div class="authContent">
+          <p class="authLabel">Human Capital Management</p>
+          <h1 class="authTitle">Welcome back</h1>
+          <p class="authDescription">Sign in to continue to your HCM Lite workspace.</p>
+
+          <form class="authForm" id="loginForm">
+            <div class="formField">
+              <label class="formLabel" for="loginEmail">Email address</label>
+              <input class="formInput" id="loginEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+            </div>
+
+            <div class="formField">
+              <label class="formLabel" for="loginPassword">Password</label>
+              <div class="passwordField">
+                <input class="formInput" id="loginPassword" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+                <button class="passwordToggle" type="button" data-password-toggle="loginPassword" aria-label="Show password">Show</button>
+              </div>
+            </div>
+
+            <button class="primaryButton" type="submit">Log in</button>
+          </form>
+
+          <p class="authFooter">
+            New to HCM Lite?
+            <a href="createAccount.html">Create a company</a>
+          </p>
+        </div>
+      </div>
+
+      <aside class="gradientPanel">
+        <div class="gradientContent">
+          <p class="gradientLabel">Human Capital Management</p>
+          <h2 class="gradientTitle">Smarter HR Starts Here</h2>
+          <p class="gradientDescription">
+            Monitor employee performance, manage HR processes, and keep teams aligned with one simple workspace.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

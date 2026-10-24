@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Company | HCM Lite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  
+  <script src="../js/auth.js" defer></script>
+</head>
+<body>
+  <main class="authPage createAccountPage">
+    <section class="authCard">
+      <div class="formPanel">
+        <a class="brandLink" href="../index.html">
+          <span class="brandMark">H</span>
+          <span class="brandText">HCM Lite</span>
+        </a>
+
+        <div class="authContent">
+          <p class="authLabel">Get started</p>
+          <h1 class="authTitle">Create your company</h1>
+          <p class="authDescription">Set up your workplace and create its administrator account.</p>
+
+          <form class="authForm" id="setupForm">
+            <div class="formField">
+              <label class="formLabel" for="companyName">Company name</label>
+              <input class="formInput" id="companyName" name="companyName" type="text" placeholder="Your company name" autocomplete="organization" maxlength="100" required>
+            </div>
+
+            <div class="formField">
+              <label class="formLabel" for="adminName">Administrator name</label>
+              <input class="formInput" id="adminName" name="adminName" type="text" placeholder="Your full name" autocomplete="name" maxlength="100" required>
+            </div>
+
+            <div class="formField">
+              <label class="formLabel" for="adminEmail">Administrator email</label>
+              <input class="formInput" id="adminEmail" name="adminEmail" type="email" placeholder="you@company.com" autocomplete="email" required>
+            </div>
+
+            <div class="formField">
+              <label class="formLabel" for="adminPassword">Create password</label>
+              <div class="passwordField">
+                <input class="formInput" id="adminPassword" name="adminPassword" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required>
+                <button class="passwordToggle" type="button" data-password-toggle="adminPassword" aria-label="Show password">Show</button>
+              </div>
+            </div>
+
+            <button class="primaryButton" type="submit">Create company</button>
+          </form>
+
+          <p class="authFooter">
+            Already have an account?
+            <a href="signIn.html">Sign in</a>
+          </p>
+        </div>
+      </div>
+
+      <aside class="gradientPanel">
+        <div class="gradientContent">
+          <p class="gradientLabel">Human Capital Management</p>
+          <h2 class="gradientTitle">Your team. Your workplace. One simple system.</h2>
+          <p class="gradientDescription">
+            Manage employees, track attendance, handle leave requests, and keep payroll organized in one place.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
