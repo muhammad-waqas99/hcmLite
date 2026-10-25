@@ -20,12 +20,17 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/settings.css">
 
+
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/layout.js" defer></script>
+  <script src="../js/demo.js" defer></script>
   <script src="../js/settings.js" defer></script>
 </head>
 
-<body>
+<body data-app-role="admin">
   <div class="appShell">
     <aside
       class="sidebar"
@@ -108,6 +113,7 @@
         </div>
 
         <div class="topbarRight">
+          <span class="dateText" data-current-date></span>
           <span class="topbarRole">Administrator</span>
           <span class="profileAvatar" aria-hidden="true">A</span>
         </div>
@@ -302,8 +308,7 @@
                 </p>
 
                 <p class="settingsNote">
-                  This page saves the schedule. The current project does not yet
-                  calculate attendance totals from these settings.
+                  Attendance, leave balance, and current-period payroll use this schedule.
                 </p>
               </section>
 
@@ -315,7 +320,7 @@
 
                   <div>
                     <h2>Existing records</h2>
-                    <p>Only company details and working hours are updated here.</p>
+                    <p>Company details, working hours, annual leave quota, and payroll currency are updated here.</p>
                   </div>
                 </div>
 
@@ -344,8 +349,16 @@
             </button>
           </div>
         </form>
+        <section class="demoResetCard" id="demoResetCard" hidden aria-labelledby="demoResetTitle">
+          <div><p class="settingsEyebrow">Demo workspace</p><h2 id="demoResetTitle">Restore sample data</h2><p>Reset demo employees, attendance, leave requests, and company settings to their original sample state.</p></div>
+          <button class="demoResetButton" id="resetDemoData" type="button">Reset Demo Data</button>
+        </section>
       </main>
     </div>
   </div>
 </body>
 </html>
+
+
+
+
