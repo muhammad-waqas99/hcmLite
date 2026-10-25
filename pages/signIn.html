@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/auth.css">
 
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/demo.js" defer></script>
   <script src="../js/auth.js" defer></script>
 </head>
 <body>
@@ -43,6 +45,11 @@
             <button class="primaryButton" type="submit">Log in</button>
           </form>
 
+          <section class="demoAccessCard" aria-labelledby="demoAccessTitle">
+            <div><strong id="demoAccessTitle">Explore a ready-to-use demo</strong><p>Open the sample Admin workspace, or use an employee account below.</p></div>
+            <button class="demoAccessButton" type="button" data-demo-login><i class="bi bi-stars" aria-hidden="true"></i>Explore Demo</button>
+            <details class="demoCredentials"><summary>Sample employee sign-in details</summary><p>Shared password: <code>Demo@1234</code></p><ul><li><code>saqib@demo.hcmlite.test</code></li><li><code>waqas@demo.hcmlite.test</code></li><li><code>huzaifa@demo.hcmlite.test</code></li><li><code>abdullah@demo.hcmlite.test</code></li><li><code>rehaan@demo.hcmlite.test</code></li><li><code>sara@demo.hcmlite.test</code></li></ul></details>
+          </section>
           <p class="authFooter">
             New to HCM Lite?
             <a href="createAccount.html">Create a company</a>
@@ -63,3 +70,5 @@
   </main>
 </body>
 </html>
+
+

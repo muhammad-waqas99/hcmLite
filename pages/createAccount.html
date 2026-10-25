@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/auth.css">
   
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/demo.js" defer></script>
   <script src="../js/auth.js" defer></script>
 </head>
 <body>
@@ -27,12 +29,17 @@
           <p class="authDescription">Set up your workplace and create its administrator account.</p>
 
           <form class="authForm" id="setupForm">
-            <div class="formField">
+            <fieldset class="authFieldGroup">
+              <legend>Company details</legend>
+              <div class="formField">
               <label class="formLabel" for="companyName">Company name</label>
               <input class="formInput" id="companyName" name="companyName" type="text" placeholder="Your company name" autocomplete="organization" maxlength="100" required>
             </div>
 
-            <div class="formField">
+            </fieldset>
+            <fieldset class="authFieldGroup">
+              <legend>Administrator account</legend>
+              <div class="formField">
               <label class="formLabel" for="adminName">Administrator name</label>
               <input class="formInput" id="adminName" name="adminName" type="text" placeholder="Your full name" autocomplete="name" maxlength="100" required>
             </div>
@@ -50,8 +57,11 @@
               </div>
             </div>
 
-            <button class="primaryButton" type="submit">Create company</button>
+            </fieldset>
+            <button class="primaryButton" type="submit">Create Company &amp; Admin</button>
           </form>
+
+          <div class="demoSetupOption"><span>Want to look around first?</span><button class="demoTextButton" type="button" data-demo-login>Explore Demo</button></div>
 
           <p class="authFooter">
             Already have an account?
@@ -73,3 +83,5 @@
   </main>
 </body>
 </html>
+
+
