@@ -1,4 +1,4 @@
-  .employeesMain {
+﻿  .employeesMain {
   width: min(1480px, 100%);
   margin: 0 auto;
   padding: 28px 32px 40px;
@@ -726,3 +726,14 @@
     transition-duration: 0.01ms !important;
   }
 }
+.employeeIdentity { min-width: 160px; display: flex; align-items: center; gap: 10px; }
+.employeeInitials { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: 50%; background: #EFF6FF; color: var(--color-primary); font-size: 11px; font-weight: 700; }
+.employeeNameBlock { min-width: 0; display: grid; gap: 3px; }
+.employeeNameBlock strong { font-size: 12px; overflow-wrap: anywhere; }
+.employeeNameBlock small { color: var(--color-muted); font-size: 10px; }
+.employeeEmailCell { overflow-wrap: anywhere; }
+.employeeStatusToggle { min-height: 36px; padding: 0 9px; border: 1px solid var(--color-border); border-radius: 7px; background: #fff; color: var(--color-muted); cursor: pointer; font-size: 10px; font-weight: 600; }
+.employeeStatusToggle:hover { border-color: #B8CCEE; color: var(--color-primary); }
+.employeeForm input[type="date"] { padding-right: 36px; }
+@media (max-width: 767px) { .employeeStatusToggle { min-height: 40px; padding: 0 11px; } }
+

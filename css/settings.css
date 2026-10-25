@@ -358,3 +358,14 @@
     width: 100%;
   }
 }
+.settingsField input[type="date"], .settingsField input[type="time"] { padding-right: 38px; }
+.settingsNumberField input { padding-right: 92px; }
+.settingsNumberField > span { right: 32px; }
+
+.demoResetCard { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 20px; padding: 18px; border: 1px solid var(--color-border); border-radius: 10px; background: #fff; }
+.demoResetCard[hidden] { display: none; }
+.demoResetCard h2 { margin: 0; font-size: 15px; }
+.demoResetCard p:last-child { max-width: 560px; margin: 6px 0 0; color: var(--color-muted); font-size: 12px; line-height: 1.55; }
+.demoResetButton { min-height: 44px; flex: 0 0 auto; padding: 0 14px; border: 1px solid #fecaca; border-radius: 7px; background: #fff; color: var(--color-danger); cursor: pointer; font: inherit; font-size: 12px; font-weight: 650; }
+.demoResetButton:hover { background: #fef2f2; }
+@media (max-width: 600px) { .demoResetCard { align-items: stretch; flex-direction: column; } }

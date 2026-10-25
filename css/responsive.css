@@ -1,0 +1,11 @@
+﻿/* Shared sizing safeguards: keep overflow in data containers instead of the page. */
+.appShell, .appArea, main, section, article, form, fieldset { min-width: 0; }
+main { max-width: 100%; }
+input, select, textarea, button { max-width: 100%; }
+@media (max-width: 767px) {
+  .topbarRight { min-width: 0; }
+  .employeeTableWrap, .requestTableWrap, .dashboardTableWrap, .employeeTableWrap, .payslipTableWrap { width: 100%; }
+  .directoryToolbar, .requestFilters { min-width: 0; }
+  .directorySearch, .requestSearch { min-width: 0; }
+  .employeeModal, .addEmployeeModal { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow-y: auto; }
+}
