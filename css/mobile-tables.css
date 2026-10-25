@@ -1,0 +1,116 @@
+/* Mobile record cards replace wide data tables without losing fields. */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .employeeTable, .requestTable { min-width: 720px; table-layout: fixed; }
+  .employeeTable th, .employeeTable td, .requestTable th, .requestTable td { padding: 9px 8px; white-space: normal; overflow-wrap: anywhere; }
+  .employeeTable th:nth-child(1) { width: 22%; }
+  .employeeTable th:nth-child(2) { width: 13%; }
+  .employeeTable th:nth-child(3) { width: 23%; }
+  .employeeTable th:nth-child(4) { width: 13%; }
+  .employeeTable th:nth-child(5) { width: 11%; }
+  .employeeTable th:nth-child(6) { width: 18%; }
+  .requestTable th:nth-child(1) { width: 17%; }
+  .requestTable th:nth-child(2) { width: 16%; }
+  .requestTable th:nth-child(3) { width: 21%; }
+  .requestTable th:nth-child(4) { width: 8%; }
+  .requestTable th:nth-child(5) { width: 12%; }
+  .requestTable th:nth-child(6) { width: 11%; }
+  .requestTable th:nth-child(7) { width: 15%; }
+  .employeeEmailCell, .leaveReason { overflow-wrap: anywhere; }
+  .requestTable .leaveDatesCell, .requestTable .leaveActionCell { min-width: 0; }
+  .requestTable .leaveDecisionButton { min-height: 32px; margin: 1px; padding: 0 6px; font-size: 9px; }
+}
+
+@media (max-width: 767px) {
+  .employeeTableWrap, .requestTableWrap, .dashboardTableWrap, .payslipTableWrap { width: 100%; overflow: visible; overscroll-behavior: auto; }
+  .employeeTable, .requestTable, .dashboardTable, .employeeDataTable, .payslipTable {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border-collapse: separate;
+    table-layout: auto;
+  }
+  .employeeTable thead, .requestTable thead, .dashboardTable thead, .employeeDataTable thead, .payslipTable thead {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  .employeeTable tbody, .requestTable tbody, .dashboardTable tbody, .employeeDataTable tbody, .payslipTable tbody {
+    display: grid;
+    gap: 10px;
+  }
+  .employeeTable tbody tr, .requestTable tbody tr, .dashboardTable tbody tr, .employeeDataTable tbody tr, .payslipTable tbody tr {
+    min-width: 0;
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    background: var(--color-surface);
+  }
+  .employeeTable td, .requestTable td, .dashboardTable td, .employeeDataTable td, .payslipTable td {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(76px, .36fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    padding: 9px 11px;
+    border: 0;
+    border-bottom: 1px solid #edf0f3;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .employeeTable td:last-child, .requestTable td:last-child, .dashboardTable td:last-child, .employeeDataTable td:last-child, .payslipTable td:last-child { border-bottom: 0; }
+  .employeeTable td::before, .requestTable td::before, .dashboardTable td::before, .employeeDataTable td::before, .payslipTable td::before {
+    content: attr(data-label);
+    min-width: 0;
+    color: var(--color-muted);
+    font-size: 10px;
+    font-weight: 650;
+    line-height: 1.5;
+  }
+  .employeeTable td[colspan], .requestTable td[colspan], .dashboardTable td[colspan], .employeeDataTable td[colspan], .payslipTable td[colspan] {
+    display: block;
+    padding: 14px;
+    border: 0;
+    text-align: center;
+  }
+  .employeeTable td[colspan]::before, .requestTable td[colspan]::before, .dashboardTable td[colspan]::before, .employeeDataTable td[colspan]::before, .payslipTable td[colspan]::before { content: none; }
+  .employeeTable td[data-label="Employee"], .requestTable td[data-label="Employee"] { align-items: center; }
+  .employeeIdentity { min-width: 0; gap: 8px; }
+  .employeeNameBlock strong, .employeeNameBlock small, .employeeEmailCell, .leaveEmployeeName, .leaveEmployeeId, .leaveDatesCell, .leaveReason { overflow-wrap: anywhere; word-break: break-word; }
+  .employeeRowActions, .leaveActionCell { display: flex !important; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 7px; }
+  .employeeRowActions .employeeStatusToggle, .leaveActionCell .leaveDecisionButton { min-height: 44px; margin: 0; padding: 0 10px; }
+  .employeeTable .statusBadge, .requestTable .statusBadge, .employeeDataTable .statusBadge, .dashboardTable .statusBadge { justify-self: start; white-space: normal; }
+  .dashboardTable tbody tr { gap: 0; }
+  .payslipTable tbody { gap: 8px; }
+  .payslipTable tbody tr { padding: 3px 0; }
+  .payslipTable td[data-label="Amount"] { font-weight: 650; }
+  .payslipTable td:last-child { text-align: left; white-space: normal; }
+  .payslipTable .amountValue, .payslipTable .amountNegative { justify-self: start; overflow-wrap: anywhere; }
+  .directoryFooter, .tableFooter { overflow-wrap: anywhere; }
+}
+
+@media (max-width: 390px) {
+  .employeeTable td, .requestTable td, .dashboardTable td, .employeeDataTable td, .payslipTable td { grid-template-columns: minmax(69px, .34fr) minmax(0, 1fr); gap: 8px; padding: 9px; }
+  .employeeRowActions .employeeStatusToggle, .leaveActionCell .leaveDecisionButton { padding: 0 8px; font-size: 11px; }
+}
+
+@media print {
+  .payslipTable { display: table !important; width: 100% !important; min-width: 0 !important; border-collapse: collapse !important; }
+  .payslipTable thead { position: static !important; width: auto !important; height: auto !important; margin: 0 !important; overflow: visible !important; clip: auto !important; clip-path: none !important; white-space: normal !important; }
+  .payslipTable tbody { display: table-row-group !important; }
+  .payslipTable tbody tr { display: table-row !important; overflow: visible !important; border: 0 !important; }
+  .payslipTable th, .payslipTable td { display: table-cell !important; padding: 12px 10px !important; border-bottom: 1px solid #edf0f4 !important; }
+  .payslipTable td::before { content: none !important; }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your current HCM Lite payroll estimate">
+  <title>My Payslip | HCM Lite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/payslip.css">
+  <link rel="stylesheet" href="../css/mobile-tables.css">
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/layout.js" defer></script>
+  <script src="../js/payslip.js" defer></script>
+</head>
+<body data-app-role="employee">
+  <div class="appShell">
+    <aside class="sidebar" id="sidebar" popover="auto" aria-label="Employee navigation">
+      <div class="sidebarBrand">
+        <span class="brandMark" aria-hidden="true"><i class="bi bi-people-fill"></i></span>
+        <div class="brandTitle"><strong>HCM Lite</strong><span>Employee workspace</span></div>
+        <button class="mobileSidebarClose" type="button" popovertarget="sidebar" popovertargetaction="hide" aria-label="Close navigation"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+      <nav class="sidebarNav" aria-label="Main navigation">
+        <a class="navItem" href="employee.html"><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Dashboard</span></a>
+        <a class="navItem" href="employee.html#attendance"><i class="bi bi-clock-history" aria-hidden="true"></i><span>My Attendance</span></a>
+        <a class="navItem" href="employee.html#my-leaves"><i class="bi bi-calendar-check" aria-hidden="true"></i><span>My Leaves</span></a>
+        <a class="navItem isActive" href="payslip.html" aria-current="page"><i class="bi bi-receipt" aria-hidden="true"></i><span>My Payslips</span></a>
+        <a class="navItem" href="employee.html#profile"><i class="bi bi-person-vcard" aria-hidden="true"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebarFooter"><div class="profileSummary"><span class="profileAvatar" aria-hidden="true">E</span><div class="profileText"><strong>Employee</strong><span>Team member</span></div></div></div>
+    </aside>
+    <div class="appArea">
+      <header class="topbar">
+        <div class="topbarLeft">
+          <button class="iconButton menuButton" type="button" popovertarget="sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation"><i class="bi bi-list" aria-hidden="true"></i></button>
+          <h2 class="topbarTitle">My Payslips</h2>
+        </div>
+        <div class="topbarRight"><span class="topbarRole"></span><span class="profileAvatar topbarAvatar" aria-hidden="true"></span></div>
+      </header>
+      <main class="payslipMain">
+        <div class="payslipPageHeading">
+          <div class="payslipBreadcrumb"><a href="employee.html">My dashboard</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Payslips</span></div>
+          <div class="payslipHeadingRow"><div><p class="employeeEyebrow">Payroll</p><h1>My payslip</h1><p>Review the salary and attendance figures available for this period.</p></div><button class="employeeSecondaryButton printButton" id="printPayslip" type="button" disabled><i class="bi bi-printer" aria-hidden="true"></i> Print / Save as PDF</button></div>
+        </div>
+
+        <section class="payslipPeriodControl" aria-label="Payslip period">
+          <label for="payslipPeriod">Payroll period</label>
+          <input id="payslipPeriod" type="month" required>
+          <span class="periodNote">Only the current period can be estimated from records currently stored.</span>
+        </section>
+        <p id="payslipMessage" class="payslipMessage" role="status" aria-live="polite"></p>
+
+        <article class="payslipDocument" id="payslipDocument" hidden aria-labelledby="payslipTitle">
+          <header class="payslipDocumentHeader">
+            <div><span class="payslipBrandMark"><i class="bi bi-people-fill" aria-hidden="true"></i></span><div><strong id="payslipCompanyName">Company</strong><span id="payslipCompanyDetails"></span></div></div>
+            <div class="payslipDocumentTitle"><p>EMPLOYEE PAYROLL</p><h2 id="payslipTitle">Payslip</h2><span id="payslipPeriodLabel"></span></div>
+          </header>
+          <section class="payslipInfoGrid" aria-label="Company and employee details">
+            <div><h3>Employee</h3><dl><div><dt>Name</dt><dd id="payEmployeeName"></dd></div><div><dt>Employee ID</dt><dd id="payEmployeeId"></dd></div><div><dt>Email</dt><dd id="payEmployeeEmail"></dd></div><div><dt>Department</dt><dd id="payEmployeeDepartment"></dd></div><div><dt>Job title</dt><dd id="payEmployeeJobTitle"></dd></div><div><dt>Joining date</dt><dd id="payEmployeeJoiningDate"></dd></div></dl></div>
+            <div class="payslipPeriodCard"><span>Pay period</span><strong id="payslipPeriodCard"></strong><span>Calculation through <b id="payslipCutoff"></b></span><small>Current-period estimate based on saved attendance and company schedule.</small></div>
+          </section>
+          <section class="payslipBreakdown" aria-labelledby="breakdownTitle">
+            <div class="payslipSectionHeading"><div><p>Salary breakdown</p><h3 id="breakdownTitle">Earnings and deductions</h3></div><span class="estimateBadge">Estimate</span></div>
+            <div class="payslipTableWrap"><table class="payslipTable"><thead><tr><th scope="col">Description</th><th scope="col">Calculation</th><th scope="col">Amount</th></tr></thead><tbody id="payslipRows"></tbody></table></div>
+          </section>
+          <section class="payrollAttendance" aria-labelledby="payrollAttendanceTitle">
+            <div class="payslipSectionHeading"><div><p>Period summary</p><h3 id="payrollAttendanceTitle">Attendance to date</h3></div></div>
+            <div class="payrollMetrics">
+              <div><span>Scheduled workdays elapsed</span><strong id="payEligibleDays">0</strong></div>
+              <div><span>Attended days</span><strong id="payAttendedDays">0</strong></div>
+              <div><span>Half days</span><strong id="payHalfDays">0</strong></div>
+              <div><span>Absences</span><strong id="payAbsentDays">0</strong></div>
+              <div><span>Approved leave</span><strong id="payApprovedLeaveDays">0</strong></div>
+            </div>
+          </section>
+          <footer class="payslipNetSummary"><div><span>Estimated net pay</span><small>Monthly salary less attendance-based deductions shown above.</small></div><strong id="payslipNet"></strong></footer>
+          <p class="payslipDisclaimer">This is an estimate from current employee salary and LocalStorage attendance records. HCM Lite does not record payment confirmation or historical payroll snapshots.</p>
+        </article>
+        <section class="payslipEmpty" id="payslipEmpty" role="status"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-receipt-cutoff"></i></span><strong id="payslipEmptyTitle">Payslip information is not available</strong><span id="payslipEmptyText">Select a period to review available payroll information.</span></section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
+

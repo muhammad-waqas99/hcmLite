@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your HCM Lite employee workspace">
+  <title>My Dashboard | HCM Lite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/employee.css">
+  <link rel="stylesheet" href="../css/mobile-tables.css">
+  <link rel="stylesheet" href="../css/charts.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" defer></script>
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/charts.js" defer></script>
+  <script src="../js/layout.js" defer></script>
+  <script src="../js/employee.js" defer></script>
+</head>
+<body data-app-role="employee">
+  <div class="appShell">
+    <aside class="sidebar" id="sidebar" popover="auto" aria-label="Employee navigation">
+      <div class="sidebarBrand">
+        <span class="brandMark" aria-hidden="true"><i class="bi bi-people-fill"></i></span>
+        <div class="brandTitle"><strong>HCM Lite</strong><span>Employee workspace</span></div>
+        <button class="mobileSidebarClose" type="button" popovertarget="sidebar" popovertargetaction="hide" aria-label="Close navigation"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+      <nav class="sidebarNav" aria-label="Main navigation">
+        <a class="navItem isActive" href="employee.html" aria-current="page"><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Dashboard</span></a>
+        <a class="navItem" href="#attendance"><i class="bi bi-clock-history" aria-hidden="true"></i><span>My Attendance</span></a>
+        <a class="navItem" href="#my-leaves"><i class="bi bi-calendar-check" aria-hidden="true"></i><span>My Leaves</span></a>
+        <a class="navItem" href="payslip.html"><i class="bi bi-receipt" aria-hidden="true"></i><span>My Payslips</span></a>
+        <a class="navItem" href="#profile"><i class="bi bi-person-vcard" aria-hidden="true"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebarFooter"><div class="profileSummary"><span class="profileAvatar" aria-hidden="true">E</span><div class="profileText"><strong>Employee</strong><span>Team member</span></div></div></div>
+    </aside>
+    <div class="appArea">
+      <header class="topbar">
+        <div class="topbarLeft">
+          <button class="iconButton menuButton" type="button" popovertarget="sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation"><i class="bi bi-list" aria-hidden="true"></i></button>
+          <h2 class="topbarTitle">My Dashboard</h2>
+        </div>
+        <div class="topbarRight"><span class="topbarRole"></span><span class="profileAvatar topbarAvatar" aria-hidden="true"></span></div>
+      </header>
+      <main class="employeeMain">
+        <section class="employeePageHeading">
+          <div><p class="employeeEyebrow">Employee self-service</p><h1>Good to see you, <span id="employeeWelcome">there</span></h1><p>Here is your personal work and time-off overview.</p></div>
+          <span class="employeeDate" id="employeeWelcomeDate"></span>
+        </section>
+
+        <section class="employeeKpis" aria-label="Personal overview">
+          <article class="employeeKpi"><span class="employeeKpiIcon blueKpi"><i class="bi bi-clock" aria-hidden="true"></i></span><div><span>Today's attendance</span><strong id="attendanceState">Loading</strong></div></article>
+          <article class="employeeKpi"><span class="employeeKpiIcon greenKpi"><i class="bi bi-calendar2-check" aria-hidden="true"></i></span><div><span>Annual leave remaining</span><strong><span id="leaveBalanceRemaining">0</span> days</strong></div></article>
+          <article class="employeeKpi"><span class="employeeKpiIcon amberKpi"><i class="bi bi-hourglass-split" aria-hidden="true"></i></span><div><span>Pending requests</span><strong id="pendingLeaveCount">0</strong></div></article>
+          <article class="employeeKpi"><span class="employeeKpiIcon slateKpi"><i class="bi bi-wallet2" aria-hidden="true"></i></span><div><span>Monthly base salary</span><strong id="salarySummary">Not configured</strong></div></article>
+        </section>
+
+        <div class="employeeMainGrid">
+          <div class="employeePrimaryColumn">
+            <section class="employeePanel" id="attendance" aria-labelledby="attendanceTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Your time</p><h2 id="attendanceTitle">Recent attendance</h2></div><span class="employeePanelDate" data-current-date></span></div>
+              <div class="employeeTableWrap">
+                <table class="employeeDataTable">
+                  <thead><tr><th scope="col">Date</th><th scope="col">Check-in</th><th scope="col">Check-out</th><th scope="col">Status</th><th scope="col">Worked</th></tr></thead>
+                  <tbody id="myAttendanceRows"><tr><td colspan="5">Loading attendance…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="employeePanel chartPanel employeeChartPanel" aria-labelledby="myAttendanceTrendTitle">
+              <div class="chartHeading"><h2 id="myAttendanceTrendTitle">My attendance trend</h2><p>Your recorded check-ins across recent company workdays.</p></div>
+              <div class="chartCanvasWrap"><canvas id="employeeAttendanceTrend"></canvas></div>
+              <div class="chartEmpty" role="status" hidden></div>
+            </section>
+            <section class="employeePanel" id="my-leaves" aria-labelledby="myLeaveTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Time off</p><h2 id="myLeaveTitle">Your leave requests</h2></div><a class="employeeTextLink" href="#leaveForm">Apply for leave <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+              <div class="employeeTableWrap">
+                <table class="employeeDataTable">
+                  <thead><tr><th scope="col">Type</th><th scope="col">Dates</th><th scope="col">Days</th><th scope="col">Status</th></tr></thead>
+                  <tbody id="myLeaveRows"><tr><td colspan="4">Loading leave requests…</td></tr></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="employeePanel" id="leaveFormPanel" aria-labelledby="leaveFormTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Request time off</p><h2 id="leaveFormTitle">Apply for leave</h2><p>Your request will be sent to your administrator for review.</p></div></div>
+              <form id="leaveForm" class="employeeLeaveForm">
+                <div class="employeeFormGrid">
+                  <div class="employeeField"><label for="leaveType">Leave type</label><select id="leaveType" required><option value="annual">Annual leave</option><option value="casual">Casual leave</option><option value="sick">Sick leave</option></select></div>
+                  <div class="employeeField"><label for="leaveStart">Start date</label><input id="leaveStart" type="date" required></div>
+                  <div class="employeeField"><label for="leaveEnd">End date</label><input id="leaveEnd" type="date" required></div>
+                  <div class="employeeField employeeFieldFull"><label for="leaveReason">Reason</label><textarea id="leaveReason" rows="3" maxlength="500" placeholder="Add a short note for your manager"></textarea></div>
+                </div>
+                <p class="formMessage" id="leaveMessage" role="status" aria-live="polite"></p>
+                <button class="employeePrimaryButton" type="submit"><i class="bi bi-send" aria-hidden="true"></i> Submit request</button>
+              </form>
+            </section>
+          </div>
+
+          <aside class="employeeAsideColumn">
+            <section class="employeePanel attendanceActionPanel" aria-labelledby="quickAttendanceTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Today</p><h2 id="quickAttendanceTitle">Attendance actions</h2></div><span class="employeeLiveDot" aria-label="Current day"></span></div>
+              <p class="attendancePanelStatus" id="attendanceStateCopy">Your attendance is ready.</p>
+              <div class="attendanceTimes">
+                <div><span>Check-in</span><strong id="attendanceCheckIn">—</strong></div>
+                <div><span>Check-out</span><strong id="attendanceCheckOut">—</strong></div>
+                <div><span>Worked</span><strong id="attendanceDuration">—</strong></div>
+              </div>
+              <div class="attendanceActions">
+                <button class="employeePrimaryButton" id="checkInButton" type="button"><i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> Check in</button>
+                <button class="employeeSecondaryButton" id="checkOutButton" type="button" disabled><i class="bi bi-box-arrow-right" aria-hidden="true"></i> Check out</button>
+              </div>
+              <p class="formMessage" id="attendanceMessage" role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="employeePanel leaveBalancePanel" aria-labelledby="leaveBalanceTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Annual leave</p><h2 id="leaveBalanceTitle">Leave balance</h2></div><i class="bi bi-calendar2-week employeePanelIcon" aria-hidden="true"></i></div>
+              <div class="leaveBalanceNumber"><strong><span id="leaveBalanceRemainingPanel">0</span></strong><span>days remaining</span></div>
+              <div class="chartCanvasWrap"><canvas id="employeeLeaveBalanceChart"></canvas></div>
+              <div class="chartEmpty" role="status" hidden></div>              <div class="leaveBalanceRows"><div><span>Annual quota</span><strong id="leaveBalanceQuota">0</strong></div><div><span>Approved</span><strong id="leaveBalanceApproved">0 days</strong></div><div><span>Pending</span><strong id="leaveBalancePending">0 days</strong></div></div>
+              <a class="employeeTextLink" href="#leaveForm">Request time off <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </section>
+
+            <section class="employeePanel profilePanel" id="profile" aria-labelledby="profileTitle">
+              <div class="employeePanelHeading"><div><p class="employeePanelEyebrow">Account</p><h2 id="profileTitle">Your profile</h2></div><i class="bi bi-person-vcard employeePanelIcon" aria-hidden="true"></i></div>
+              <dl class="employeeProfileList">
+                <div><dt>Name</dt><dd id="profileName">—</dd></div>
+                <div><dt>Email</dt><dd id="profileEmail">—</dd></div>
+                <div><dt>Employee ID</dt><dd id="profileEmployeeId">—</dd></div>
+                <div><dt>Department</dt><dd id="profileDepartment">—</dd></div>
+                <div><dt>Job title</dt><dd id="profileJobTitle">—</dd></div>
+                <div><dt>Joining date</dt><dd id="profileJoiningDate">—</dd></div>
+              </dl>
+            </section>
+            <a class="employeePayslipLink" href="payslip.html"><span class="employeeQuickIcon"><i class="bi bi-receipt" aria-hidden="true"></i></span><span><strong>View payslips</strong><small>Review your current payroll estimate</small></span><i class="bi bi-chevron-right" aria-hidden="true"></i></a>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
+
+

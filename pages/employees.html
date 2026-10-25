@@ -14,10 +14,16 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/employees.css">
+  <link rel="stylesheet" href="../css/mobile-tables.css">
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/layout.js" defer></script>
+  <script src="../js/demo.js" defer></script>
+  <script src="../js/employees.js" defer></script>
 </head>
 
-<body>
+<body data-app-role="admin">
   <div class="appShell">
 <aside
   class="sidebar"
@@ -62,10 +68,7 @@
       <span>Leave Management</span>
     </a>
 
-    <button class="navItem" type="button" disabled>
-      <i class="bi bi-gear" aria-hidden="true"></i>
-      <span>Settings</span>
-    </button>
+    <a class="navItem" href="settings.html"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
   </nav>
 
   <div class="sidebarFooter">
@@ -95,6 +98,7 @@
   <h2 class="topbarTitle">Employees</h2>
 </div>
         <div class="topbarRight">
+          <span class="dateText" data-current-date></span>
           <span class="topbarRole">Administrator</span>
           <span class="profileAvatar topbarAvatar" aria-hidden="true">A</span>
         </div>
@@ -110,6 +114,7 @@
     <button class="addEmployeeButton" type="button" popovertarget="addEmployeeModal" aria-haspopup="dialog"><i class="bi bi-person-plus" aria-hidden="true"></i>Add employee</button>
   </section>
 
+  <p class="formMessage" id="employeePageMessage" role="status" aria-live="polite"></p>
   <section class="employeeOverview" aria-label="Employee totals">
     <div class="overviewLead"><span class="overviewIcon" aria-hidden="true"><i class="bi bi-person-vcard"></i></span><div><span class="overviewLabel">People in this directory</span><strong>0 employees</strong></div></div>
     <div class="overviewMetric"><span class="metricDot activeDot" aria-hidden="true"></span><span>Active</span><strong>0</strong></div>
@@ -123,16 +128,16 @@
     </div>
 
     <div class="directoryToolbar" aria-label="Search and filter employees">
-      <label class="directorySearch"><span class="visuallyHidden">Search employees</span><i class="bi bi-search" aria-hidden="true"></i><input type="search" placeholder="Search name, ID, or email"></label>
-      <label class="directoryFilter"><span>Status</span><select><option value="all">All employees</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
-      <label class="directoryFilter"><span>Department</span><select><option value="all">All departments</option><option value="engineering">Engineering</option><option value="finance">Finance</option><option value="marketing">Marketing</option><option value="people">People &amp; Culture</option></select></label>
+      <label class="directorySearch"><span class="visuallyHidden">Search employees</span><i class="bi bi-search" aria-hidden="true"></i><input id="employeeSearch" type="search" placeholder="Search name, ID, or email"></label>
+      <label class="directoryFilter"><span>Status</span><select id="employeeStatusFilter"><option value="all">All employees</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
+      <label class="directoryFilter"><span>Department</span><select id="employeeDepartmentFilter"><option value="all">All departments</option><option value="engineering">Engineering</option><option value="finance">Finance</option><option value="marketing">Marketing</option><option value="people">People &amp; Culture</option></select></label>
     </div>
 
     <div class="employeeTableWrap">
       <table class="employeeTable isEmpty">
-        <thead><tr><th scope="col">Employee</th><th scope="col">Department</th><th scope="col">Work email</th><th scope="col">Joined</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Profile</span></th></tr></thead>
-        <tbody><tr><td colspan="6"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-person-plus"></i></span><strong>No employees yet</strong><span>Add an employee to start building your directory.</span><button class="emptyStateAction" type="button" popovertarget="addEmployeeModal">Add employee</button></div></td></tr></tbody>
-      </table>
+  <thead><tr><th scope="col">Employee</th><th scope="col">Department</th><th scope="col">Work email</th><th scope="col">Joined</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Actions</span></th></tr></thead>
+  <tbody id="employeeRows"><tr><td colspan="6"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-person-plus"></i></span><strong>No employees yet</strong><span>Add an employee to start building your directory.</span></div></td></tr></tbody>
+</table>
     </div>
 
     <div class="directoryFooter"><span>0 employees</span><span>Employee directory</span></div>
@@ -166,53 +171,19 @@
       </button>
     </div>
 
-    <form class="employeeForm">
-      <div class="employeeFormGrid">
-        <div class="formField">
-          <label for="employeeName">Full name <span aria-hidden="true">*</span></label>
-          <input id="employeeName" name="employeeName" type="text" placeholder="Full name">
-        </div>
-
-        <div class="formField">
-          <label for="employeeId">Employee ID <span aria-hidden="true">*</span></label>
-          <input id="employeeId" name="employeeId" type="text" placeholder="Employee ID">
-        </div>
-
-        <div class="formField">
-          <label for="employeeEmail">Work email <span aria-hidden="true">*</span></label>
-          <input id="employeeEmail" name="employeeEmail" type="email" placeholder="name@company.com">
-        </div>
-
-        <div class="formField">
-          <label for="employeeDepartment">Department</label>
-          <select id="employeeDepartment" name="employeeDepartment">
-            <option value="">Select department</option>
-            <option>Engineering</option>
-            <option>Finance</option>
-            <option>Marketing</option>
-            <option>People &amp; Culture</option>
-          </select>
-        </div>
-
-        <div class="formField">
-          <label for="employeeJobTitle">Job title</label>
-          <input id="employeeJobTitle" name="employeeJobTitle" type="text" placeholder="Job title">
-        </div>
-
-        <div class="formField">
-          <label for="employeeJoiningDate">Joining date</label>
-          <input id="employeeJoiningDate" name="employeeJoiningDate" type="date">
-        </div>
-
-        <div class="formField">
-          <label for="employeeStatus">Status</label>
-          <select id="employeeStatus" name="employeeStatus">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div>
+    <form class="employeeForm" id="employeeForm">
+            <div class="employeeFormGrid">
+        <div class="formField"><label for="employeeName">Full name <span aria-hidden="true">*</span></label><input id="employeeName" name="employeeName" type="text" placeholder="Full name" maxlength="100" required></div>
+        <div class="formField"><label for="employeeId">Employee ID <span aria-hidden="true">*</span></label><input id="employeeId" name="employeeId" type="text" placeholder="Employee ID" maxlength="40" required></div>
+        <div class="formField"><label for="employeeEmail">Work email <span aria-hidden="true">*</span></label><input id="employeeEmail" name="employeeEmail" type="email" placeholder="name@company.com" maxlength="160" required></div>
+        <div class="formField"><label for="employeeDepartment">Department</label><select id="employeeDepartment" name="employeeDepartment"><option value="">Select department</option><option>Engineering</option><option>Finance</option><option>Marketing</option><option>People &amp; Culture</option></select></div>
+        <div class="formField"><label for="employeeJobTitle">Job title</label><input id="employeeJobTitle" name="employeeJobTitle" type="text" placeholder="Job title" maxlength="100"></div>
+        <div class="formField"><label for="employeeSalary">Monthly salary</label><input id="employeeSalary" name="monthlySalary" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Leave blank if not set"></div>
+        <div class="formField" id="employeePasswordField"><label for="employeePassword">Initial account password <span aria-hidden="true">*</span></label><input id="employeePassword" name="password" type="password" minlength="8" autocomplete="new-password" required></div>
+        <div class="formField"><label for="employeeJoiningDate">Joining date</label><input id="employeeJoiningDate" name="employeeJoiningDate" type="date"></div>
+        <div class="formField"><label for="employeeStatus">Status</label><select id="employeeStatus" name="employeeStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
       </div>
-
+<p class="formMessage" id="employeeMessage" role="status" aria-live="polite"></p>
       <div class="formActions">
         <button
           class="secondaryButton"
@@ -222,7 +193,7 @@
         >
           Cancel
         </button>
-        <button class="primaryButton" type="button" disabled>
+        <button class="primaryButton" type="submit">
           <i class="bi bi-check2" aria-hidden="true"></i>
           Save employee
         </button>
@@ -231,3 +202,11 @@
   </section>
 </body>
 </html>
+
+
+
+
+
+
+
+

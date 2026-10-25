@@ -14,10 +14,15 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/leaves.css">
+  <link rel="stylesheet" href="../css/mobile-tables.css">
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/layout.js" defer></script>
+  <script src="../js/leaves.js" defer></script>
 </head>
 
-<body>
+<body data-app-role="admin">
   <div class="appShell">
 <aside
   class="sidebar"
@@ -62,10 +67,7 @@
       <span>Leave Management</span>
     </a>
 
-    <button class="navItem" type="button" disabled>
-      <i class="bi bi-gear" aria-hidden="true"></i>
-      <span>Settings</span>
-    </button>
+    <a class="navItem" href="settings.html"><i class="bi bi-gear" aria-hidden="true"></i><span>Settings</span></a>
   </nav>
 
   <div class="sidebarFooter">
@@ -96,6 +98,7 @@
 </div>
 
         <div class="topbarRight">
+          <span class="dateText" data-current-date></span>
           <span class="topbarRole">Administrator</span>
           <span class="profileAvatar topbarAvatar" aria-hidden="true">A</span>
         </div>
@@ -118,12 +121,12 @@
   <section class="leaveOverviewGrid" aria-label="Leave review overview">
     <article class="overviewPanel reviewPanel">
       <div class="panelHeading"><div><p class="panelEyebrow">Action required</p><h2>Awaiting your review</h2></div><span class="panelCount">0</span></div>
-      <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-inbox"></i></span><strong>No leave requests to review</strong><span>New employee requests will appear here.</span></div>
+      <div id="reviewRequests" class="leaveSummaryList"><div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-inbox"></i></span><strong>No leave requests to review</strong><span>New employee requests will appear here.</span></div></div>
     </article>
 
     <article class="overviewPanel outTodayPanel">
       <div class="panelHeading"><div><p class="panelEyebrow">Team availability</p><h2>Out today</h2></div><span class="todayDate"><i class="bi bi-calendar3" aria-hidden="true"></i>Today</span></div>
-      <div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-check"></i></span><strong>No one is marked out today</strong><span>Approved leave for today will appear here.</span></div>
+      <div id="leaveOutToday" class="leaveSummaryList"><div role="status" class="emptyState emptyStateCompact"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-check"></i></span><strong>No one is marked out today</strong><span>Approved leave for today will appear here.</span></div></div>
     </article>
   </section>
 
@@ -131,16 +134,16 @@
     <div class="registerHeader"><div><p class="panelEyebrow">Request history</p><h2 id="requestRegisterTitle">All requests</h2><p>Review leave requests and their current status.</p></div></div>
 
     <div class="requestFilters" aria-label="Search and filter requests">
-      <label class="requestSearch"><span class="visuallyHidden">Search requests</span><i class="bi bi-search" aria-hidden="true"></i><input type="search" placeholder="Search employee or ID"></label>
-      <label class="filterControl"><span>Status</span><select><option value="all">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
-      <label class="filterControl"><span>Leave type</span><select><option value="all">All leave types</option><option value="annual">Annual Leave</option><option value="casual">Casual Leave</option><option value="sick">Sick Leave</option></select></label>
+      <label class="requestSearch"><span class="visuallyHidden">Search requests</span><i class="bi bi-search" aria-hidden="true"></i><input id="leaveSearch" type="search" placeholder="Search employee or ID"></label>
+      <label class="filterControl"><span>Status</span><select id="leaveStatusFilter"><option value="all">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
+      <label class="filterControl"><span>Leave type</span><select id="leaveTypeFilter"><option value="all">All leave types</option><option value="annual">Annual Leave</option><option value="casual">Casual Leave</option><option value="sick">Sick Leave</option></select></label>
     </div>
 
     <div class="requestTableWrap">
       <table class="requestTable isEmpty">
-        <thead><tr><th scope="col">Employee</th><th scope="col">Leave type</th><th scope="col">Dates</th><th scope="col">Days</th><th scope="col">Applied</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Actions</span></th></tr></thead>
-        <tbody><tr><td colspan="7"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-x"></i></span><strong>No leave requests yet</strong><span>Requests will appear here when employees submit them.</span></div></td></tr></tbody>
-      </table>
+  <thead><tr><th scope="col">Employee</th><th scope="col">Leave type</th><th scope="col">Dates</th><th scope="col">Days</th><th scope="col">Applied</th><th scope="col">Status</th><th scope="col"><span class="visuallyHidden">Actions</span></th></tr></thead>
+  <tbody id="leaveRequestRows"><tr><td colspan="7"><div role="status" class="emptyState"><span class="emptyStateIcon" aria-hidden="true"><i class="bi bi-calendar2-x"></i></span><strong>No leave requests yet</strong><span>Requests will appear here when employees submit them.</span></div></td></tr></tbody>
+</table>
     </div>
 
     <div class="tableFooter"><span>0 requests</span><span>Leave request register</span></div>
@@ -150,3 +153,8 @@
   </div>
 </body>
 </html>
+
+
+
+
+
