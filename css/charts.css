@@ -1,5 +1,5 @@
 .chartGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 20px; }
-.chartPanel { min-width: 0; overflow: hidden; }
+.chartPanel { min-width: 0;padding: 12px; overflow: hidden; }
 .chartPanelWide { grid-column: 1 / -1; }
 .chartPanel .chartHeading { margin: 0 0 15px; }
 .chartPanel .chartHeading h2 { margin: 0; color: var(--color-text); font-size: 16px; font-weight: 650; }

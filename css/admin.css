@@ -42,6 +42,10 @@
   gap: 13px;
   margin-bottom: 18px;
 }
+.dashboardDataList{
+  padding: 10px;
+}
+
 
 .dashboardStat {
   min-width: 0;
@@ -392,6 +396,7 @@
 }
 
 .teamSnapshot {
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid #edf0f3;
@@ -757,7 +762,7 @@
     transition-duration: 0.01ms !important;
   }
 }
-.snapshotRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid #EDF0F4; font-size: 12px; }
+.snapshotRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px; border-bottom: 1px solid #EDF0F4; font-size: 12px; }
 .snapshotRow:last-child { border-bottom: 0; }
 .snapshotRow strong { min-width: 28px; color: var(--color-text); text-align: right; }
 .compactRecordList { display: grid; gap: 0; }
