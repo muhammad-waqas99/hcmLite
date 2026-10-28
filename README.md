@@ -1,4 +1,9 @@
 # HCM Lite
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://hcmlite-xi.vercel.app/)
+
+</div>
 
 A lightweight Human Capital Management prototype for small teams. HCM Lite brings employee management, attendance, leave requests, and basic payroll estimates into one simple interface.
 
